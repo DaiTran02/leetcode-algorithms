@@ -14,7 +14,7 @@ Explanation: Becouse nums[0] + nums[1] == 9, we return [0,1]
 - Time complexity : O(n^2) Two cage loops
 - Space Complexity: O(1)
 ## Code
-public int[] twoSum(int[] nums, int target) {
+	public int[] twoSum(int[] nums, int target) {
 		int[] a = {};
 		
 		for(int i = 0; i < nums.length ; i++) {
@@ -27,3 +27,21 @@ public int[] twoSum(int[] nums, int target) {
 		return a;
 	}
 
+# Solution 2: HashMap (O(n))
+1. Use a HashMap to store visited elements and their indices
+2. For each nums[i], check if target - nums[i] exists in the map
+3. If yes, return the indices [map.get(target - nums[i]),i].
+4. Otherwise, store nums[i] in the map.
+
+	public int[] twoSum(int[] nums, int targer){
+		Map<Integer> map = new HashMap<>();
+
+		for(int i = 0; i < nums.leghth ; i++){
+			int check = nums[i] - target;
+			if(map.containKey(check)){
+				return new int[] (map.get(check),i); 
+			}
+			map.put(nums[i],i);
+		}
+		return new int[] {};
+	}
